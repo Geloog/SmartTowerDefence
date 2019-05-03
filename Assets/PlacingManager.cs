@@ -34,9 +34,12 @@ public class PlacingManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            isSetting = false;
-            foreach (Transform child in movingTower.transform)  //放置，颜色回复（为白）
-                child.gameObject.GetComponent<Renderer>().material.color = Color.white;
+            if (isSetting)
+            {
+                isSetting = false;
+                foreach (Transform child in movingTower.transform)  //放置，颜色回复（为白）
+                    child.gameObject.GetComponent<Renderer>().material.color = Color.white;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
