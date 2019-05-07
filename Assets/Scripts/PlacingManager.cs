@@ -30,6 +30,7 @@ public class PlacingManager : MonoBehaviour
                     if(child.gameObject.GetComponent<Renderer>())
                         child.gameObject.GetComponent<Renderer>().material.color = Color.white;
                 }
+                movingTower.GetComponent<CreateArrow>().enabled = true;
             }
         }
 

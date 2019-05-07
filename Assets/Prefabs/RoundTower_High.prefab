@@ -403,7 +403,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8843227431624420397}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2df4f9ec9f4c736408c01f95e013ba71, type: 3}
   m_Name: 
@@ -497,11 +497,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8843227431624060941}
     m_Modifications:
-    - target: {fileID: 3333305118508162227, guid: 9106130705f8aff44ae2e36e69452f78,
-        type: 3}
-      propertyPath: m_Name
-      value: AttackRange
-      objectReference: {fileID: 0}
     - target: {fileID: 4748101990943307989, guid: 9106130705f8aff44ae2e36e69452f78,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -556,6 +551,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3333305118508162227, guid: 9106130705f8aff44ae2e36e69452f78,
+        type: 3}
+      propertyPath: m_Name
+      value: AttackRange
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9106130705f8aff44ae2e36e69452f78, type: 3}
