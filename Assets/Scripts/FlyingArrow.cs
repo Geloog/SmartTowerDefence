@@ -7,6 +7,7 @@ public class FlyingArrow : MonoBehaviour
 
     private float StarttingTime;
     private Vector3 StarttingPosition;
+    private int demage = 20;
 
     public Transform target;
     public float speed = 1;
@@ -23,16 +24,17 @@ public class FlyingArrow : MonoBehaviour
     {
         if (target)
         {
-            transform.position = StarttingPosition + (target.position - StarttingPosition) * (Time.time - StarttingTime) * speed;
-            transform.up = transform.position - target.position;
+            transform.position = StarttingPosition + (new Vector3(0,1,0) + target.position - StarttingPosition) * (Time.time - StarttingTime) * speed;
+            transform.up = transform.position - target.position - new Vector3(0, 1, 0);
         }
         else
             Destroy(gameObject);
 
         if( (Time.time - StarttingTime) * speed >= 1)
         {
-            Destroy(gameObject);
             //TODO : 扣血
+            target.GetComponent<Enemy>().takeDamage(demage);
+            Destroy(gameObject);
         }
     }
 }

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlacingManager : MonoBehaviour
 {
-
-    private Ray ray;
+    
     private bool isSetting;
     private GameObject movingTower;
 
@@ -30,7 +29,8 @@ public class PlacingManager : MonoBehaviour
                     if(child.gameObject.GetComponent<Renderer>())
                         child.gameObject.GetComponent<Renderer>().material.color = Color.white;
                 }
-                movingTower.GetComponent<CreateArrow>().enabled = true;
+                movingTower.GetComponent<Shooting>().enabled = true;
+                movingTower.GetComponent<SphereCollider>().enabled = true;
             }
         }
 
@@ -42,6 +42,7 @@ public class PlacingManager : MonoBehaviour
 
         if (isSetting)
         {
+            Ray ray;
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
                 movingTower.transform.position = new Vector3(hit.point.x, movingTower.transform.position.y, hit.point.z);
@@ -54,6 +55,10 @@ public class PlacingManager : MonoBehaviour
 
         if (!isSetting)
         {
+
+            if (!GetComponent<UIDataManager>().spendGold(tower.GetComponent<TowerData>().price))
+                return;
+
             isSetting = true;
 
             movingTower = Instantiate(tower, new Vector3(0, tower.transform.position.y, 0), Quaternion.identity);

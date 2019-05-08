@@ -72,13 +72,16 @@
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
     <Compile Include="Assets\Scripts\AttackRange.cs" />
-    <Compile Include="Assets\Scripts\CreateArrow.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\FlyingArrow.cs" />
     <Compile Include="Assets\Scripts\ForTest\RotationMovement.cs" />
     <Compile Include="Assets\Scripts\navtest.cs" />
     <Compile Include="Assets\Scripts\PlacingManager.cs" />
     <Compile Include="Assets\Scripts\SceneControl.cs" />
+    <Compile Include="Assets\Scripts\Shooting.cs" />
+    <Compile Include="Assets\Scripts\TowerData.cs" />
     <Compile Include="Assets\Scripts\TowerSelecter.cs" />
+    <Compile Include="Assets\Scripts\UIDataManager.cs" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/SmartTowerDefence/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
