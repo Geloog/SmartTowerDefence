@@ -10,6 +10,9 @@ public class Shooting : MonoBehaviour
     public List<Transform> enemiesInRange;
     public float shootingSpace = 1;           //射击间隔时间
 
+    //测试用
+    //int count = 1;
+
     private float LastShotTime;
 
     // Start is called before the first frame update
@@ -30,13 +33,15 @@ public class Shooting : MonoBehaviour
 
     void ShootAt(Transform enemy)
     {
-        Instantiate(arrow, shootingPoint.position, Quaternion.identity);
-        arrow.GetComponent<FlyingArrow>().target = enemy;
+        //Debug.Log(enemy);
+        Instantiate(arrow, shootingPoint.position, Quaternion.identity).GetComponent<FlyingArrow>().target = enemy;
     }
 
     void OnEnemyDead(Transform enemy)
     {
         enemiesInRange.Remove(enemy);
+        /*Debug.Log("EnemyDead!");
+        Debug.Log(enemiesInRange.Count);*/
     }
 
     private void OnTriggerEnter(Collider other)

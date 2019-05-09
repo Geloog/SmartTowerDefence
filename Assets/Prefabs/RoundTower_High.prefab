@@ -351,6 +351,7 @@ GameObject:
   - component: {fileID: 38786803830934157}
   - component: {fileID: -8626308172655931354}
   - component: {fileID: 8548013842675089210}
+  - component: {fileID: -6471640758827181576}
   m_Layer: 2
   m_Name: RoundTower_High
   m_TagString: Tower
@@ -409,7 +410,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 26
+  m_Radius: 13
   m_Center: {x: 0, y: -2.34, z: 0}
 --- !u!114 &-8626308172655931354
 MonoBehaviour:
@@ -437,6 +438,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6d96ad75a6488d43bfbff6112f321fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 200
+--- !u!114 &-6471640758827181576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843227431624420397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d22789a4e8c14d94898e2edb5261eb2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8843227431624420399
@@ -587,6 +601,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3333305118508162226, guid: 9106130705f8aff44ae2e36e69452f78,
+        type: 3}
+      propertyPath: radius
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9106130705f8aff44ae2e36e69452f78, type: 3}

@@ -7,45 +7,77 @@ public class PlacingManager : MonoBehaviour
     
     private bool isSetting;
     private GameObject movingTower;
+    private bool canBeSet;
 
     // Start is called before the first frame update
     void Start()
     {
         isSetting = false;
+        canBeSet = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
-
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            if (isSetting)
-            {
-                isSetting = false;
-                foreach (Transform child in movingTower.transform)  //放置，颜色回复（为白）
-                {
-                    if(child.gameObject.GetComponent<Renderer>())
-                        child.gameObject.GetComponent<Renderer>().material.color = Color.white;
-                }
-                movingTower.GetComponent<Shooting>().enabled = true;
-                movingTower.GetComponent<SphereCollider>().enabled = true;
-            }
-        }
 
         if (Input.GetKeyDown(KeyCode.Mouse1)&&isSetting)
         {
             isSetting = false;
+            GetComponent<UIDataManager>().gainGold(movingTower.GetComponent<TowerData>().price);
             Destroy(movingTower);                               //取消放置
         }
 
         if (isSetting)
         {
             Ray ray;
+            RaycastHit hit;
+
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
             if (Physics.Raycast(ray, out hit))
-                movingTower.transform.position = new Vector3(hit.point.x, movingTower.transform.position.y, hit.point.z);
+            {
+                
+
+                if (hit.collider.tag == "PlacingPoint")
+                {
+                    
+                    movingTower.transform.position = new Vector3(hit.transform.position.x, movingTower.transform.position.y, hit.transform.position.z);
+                    foreach (Transform child in movingTower.transform)   //可放置时显示其颜色为绿
+                    {
+                        if (child.gameObject.GetComponent<Renderer>())
+                            child.gameObject.GetComponent<Renderer>().material.color = Color.green;
+                    }
+                    canBeSet = true;
+                }
+                else
+                {
+                    movingTower.transform.position = new Vector3(hit.point.x, movingTower.transform.position.y, hit.point.z);
+                    foreach (Transform child in movingTower.transform)   //不能放置时显示为红
+                    {
+                        if (child.gameObject.GetComponent<Renderer>())
+                            child.gameObject.GetComponent<Renderer>().material.color = Color.red;
+                    }
+                    canBeSet = false;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                if (isSetting && canBeSet && hit.transform.GetComponent<Obstacle>().place())
+                {
+                    isSetting = false;
+                    foreach (Transform child in movingTower.transform)  //放置，颜色回复（为白）
+                    {
+                        if (child.gameObject.GetComponent<Renderer>())
+                            child.gameObject.GetComponent<Renderer>().material.color = Color.white;
+                    }
+                    movingTower.GetComponent<Shooting>().enabled = true;
+                    movingTower.GetComponent<SphereCollider>().enabled = true;
+                    movingTower.transform.Find("AttackRange").gameObject.SetActive(false);
+                }
+
+                
+            }
         }
         
     }
@@ -63,11 +95,6 @@ public class PlacingManager : MonoBehaviour
 
             movingTower = Instantiate(tower, new Vector3(0, tower.transform.position.y, 0), Quaternion.identity);
 
-            foreach (Transform child in movingTower.transform)   //未放置时设置其颜色为绿 TODO:不能放置时显示为红
-            {
-                if (child.gameObject.GetComponent<Renderer>())
-                    child.gameObject.GetComponent<Renderer>().material.color = Color.green;
-            }
         }
     }
 }

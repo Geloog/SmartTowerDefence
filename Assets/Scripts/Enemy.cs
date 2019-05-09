@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public delegate void EnemyDeadHandler(Transform enemy);
     public EnemyDeadHandler EnemyDead;
     public int maxHP = 100, curHP = 100;
+    public int reward = 50;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,18 @@ public class Enemy : MonoBehaviour
         if (curHP > 0)
             HPBar.value = (float)curHP / (float)maxHP;
         else
+        {
             Destroy(gameObject);
+            GameObject.Find("GameManager").GetComponent<UIDataManager>().gainGold(50);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Base")
+        {
+            Destroy(gameObject);
+            GameObject.Find("GameManager").GetComponent<UIDataManager>().loseHP(1);
+        }
     }
 }

@@ -10,7 +10,7 @@ public class FlyingArrow : MonoBehaviour
     private int demage = 20;
 
     public Transform target;
-    public float speed = 1;
+    public float speed = 1.25f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +32,8 @@ public class FlyingArrow : MonoBehaviour
 
         if( (Time.time - StarttingTime) * speed >= 1)
         {
-            //TODO : 扣血
-            target.GetComponent<Enemy>().takeDamage(demage);
+            if(target)
+                target.GetComponent<Enemy>().takeDamage(demage);
             Destroy(gameObject);
         }
     }
