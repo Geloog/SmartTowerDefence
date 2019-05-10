@@ -74,6 +74,7 @@ public class PlacingManager : MonoBehaviour
                     movingTower.GetComponent<Shooting>().enabled = true;
                     movingTower.GetComponent<SphereCollider>().enabled = true;
                     movingTower.transform.Find("AttackRange").gameObject.SetActive(false);
+                    movingTower.transform.Find("TowerMenu").gameObject.SetActive(true);
                 }
 
                 
