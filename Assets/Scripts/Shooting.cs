@@ -5,10 +5,14 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
 
+    public enum attackMode { firstIn, random, leastHP, canKillOnly }
+
     public GameObject arrow;
     public Transform shootingPoint;
     public List<Transform> enemiesInRange;
     public float shootingSpace = 1;           //射击间隔时间
+
+    public attackMode mode;
 
     //测试用
     //int count = 1;
@@ -64,5 +68,10 @@ public class Shooting : MonoBehaviour
             Debug.Log(enemiesInRange.Count);*/
             other.gameObject.GetComponent<Enemy>().EnemyDead -= OnEnemyDead;
         }
+    }
+
+    public void setMode(int m)
+    {
+        mode = (attackMode)m;
     }
 }

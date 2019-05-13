@@ -77,11 +77,13 @@
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\FlyingArrow.cs" />
     <Compile Include="Assets\Scripts\ForTest\RotationMovement.cs" />
+    <Compile Include="Assets\Scripts\ForTest\ShowValue.cs" />
     <Compile Include="Assets\Scripts\ForTest\Test.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\navtest.cs" />
     <Compile Include="Assets\Scripts\Obstacle.cs" />
     <Compile Include="Assets\Scripts\PlacingManager.cs" />
+    <Compile Include="Assets\Scripts\SaveAndQuit.cs" />
     <Compile Include="Assets\Scripts\SceneControl.cs" />
     <Compile Include="Assets\Scripts\Shooting.cs" />
     <Compile Include="Assets\Scripts\ShowRange.cs" />

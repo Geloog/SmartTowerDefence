@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class TowerMenu : MonoBehaviour
 {
-    
-    public Dropdown attackMode;
+
+    public GameObject TowerData;
+
+    private string Name = "箭塔";
+    private string Description = "最普通的箭塔，攻击间隔为1秒，伤害为20.";
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +45,11 @@ public class TowerMenu : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Instantiate(attackMode, GameObject.Find("CanvasForAttackMode").transform).transform.position = Input.mousePosition;
+        GameObject canvas = GameObject.Find("CanvasAuto");
+        GameObject towerdata = Instantiate(TowerData, canvas.transform);
+        towerdata.GetComponent<SaveAndQuit>().tower = transform.parent.gameObject;
+        towerdata.transform.Find("Name").GetComponent<Text>().text = Name;
+        towerdata.transform.Find("Description").GetComponent<Text>().text = Description;
+        towerdata.transform.Find("AttackMode").GetComponent<Dropdown>().value = (int)transform.parent.GetComponent<Shooting>().mode;
     }
 }

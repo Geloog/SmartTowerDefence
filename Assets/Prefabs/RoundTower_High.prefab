@@ -58,8 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65eb3318c331d4b43bfe2a73e6814b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 7597266402837763963, guid: b565838a22dc1d14db2b2e6fc2f6412f, type: 3}
-  attackMode: {fileID: 6439582006119114166, guid: 390c96444448e6542a3690d18a9b5e5a,
+  TowerData: {fileID: 5627907185970725024, guid: a5df097efb33dad4d91c830987650531,
     type: 3}
 --- !u!1 &2508571345069984432
 GameObject:
