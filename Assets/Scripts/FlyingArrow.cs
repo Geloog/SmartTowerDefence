@@ -7,8 +7,8 @@ public class FlyingArrow : MonoBehaviour
 
     private float StarttingTime;
     private Vector3 StarttingPosition;
-    private int demage = 20;
 
+    public int demage = 20;
     public Transform target;
     public float speed = 1.25f;
 

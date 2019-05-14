@@ -3011,7 +3011,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2396373276736972156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40, y: 0, z: -9.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2396373276048173891}
@@ -3140,6 +3140,7 @@ MonoBehaviour:
   HPBar: {fileID: 2396373275435165677}
   maxHP: 100
   curHP: 100
+  reward: 50
 --- !u!1 &2396373276753177451
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,9 +17,9 @@ public class Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        //if (Input.GetKeyDown(KeyCode.Q))
         {
-            dropdown.transform.position = Input.mousePosition;
+            Debug.Log((int)(Random.value*5+1));
         }
     }
 }

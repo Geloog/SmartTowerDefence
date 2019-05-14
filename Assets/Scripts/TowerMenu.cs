@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class TowerMenu : MonoBehaviour
 {
@@ -45,11 +46,14 @@ public class TowerMenu : MonoBehaviour
 
     private void OnMouseDown()
     {
-        GameObject canvas = GameObject.Find("CanvasAuto");
-        GameObject towerdata = Instantiate(TowerData, canvas.transform);
-        towerdata.GetComponent<SaveAndQuit>().tower = transform.parent.gameObject;
-        towerdata.transform.Find("Name").GetComponent<Text>().text = Name;
-        towerdata.transform.Find("Description").GetComponent<Text>().text = Description;
-        towerdata.transform.Find("AttackMode").GetComponent<Dropdown>().value = (int)transform.parent.GetComponent<Shooting>().mode;
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            GameObject canvas = GameObject.Find("CanvasAuto");
+            GameObject towerdata = Instantiate(TowerData, canvas.transform);
+            towerdata.GetComponent<SaveAndQuit>().tower = transform.parent.gameObject;
+            towerdata.transform.Find("Name").GetComponent<Text>().text = Name;
+            towerdata.transform.Find("Description").GetComponent<Text>().text = Description;
+            towerdata.transform.Find("AttackMode").GetComponent<Dropdown>().value = (int)transform.parent.GetComponent<Shooting>().mode;
+        }
     }
 }

@@ -485,10 +485,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df4f9ec9f4c736408c01f95e013ba71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow: {fileID: 6788736746684898102, guid: a7ed46b362ca3e84b9ee4497497715c2, type: 3}
+  arrow: {fileID: 625406528738441228, guid: a7ed46b362ca3e84b9ee4497497715c2, type: 3}
   shootingPoint: {fileID: 5518159616039962597}
   enemiesInRange: []
   shootingSpace: 1
+  mode: 0
 --- !u!114 &8548013842675089210
 MonoBehaviour:
   m_ObjectHideFlags: 0

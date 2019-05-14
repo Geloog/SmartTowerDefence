@@ -12,12 +12,14 @@ public class LevelManager : MonoBehaviour
 
     float lastCreateTime;
     int enemyCreated = 0;
+    int count = 0;
     wave curWave;
 
     public Button startButton;
     public Transform enemyBase;
     public Transform Base;
     public GameObject Enemy;
+    public Image levelClear;
 
     class wave
     {
@@ -51,7 +53,7 @@ public class LevelManager : MonoBehaviour
                 lastCreateTime = Time.time;
                 enemyCreated++;
             }
-            else if(enemyCreated >= curWave.amount)
+            else if(enemyCreated >= curWave.amount && count == 0)
             {
                 startButton.gameObject.SetActive(true);
                 ready = false;
@@ -59,6 +61,9 @@ public class LevelManager : MonoBehaviour
                 enemyCreated = 0;
             }
         }
+
+        if (count == 0 && waves.Count == 0)
+            levelClear.gameObject.SetActive(true);
     }
 
     public void Ready()
@@ -73,6 +78,12 @@ public class LevelManager : MonoBehaviour
 
     void CreateEnemy()
     {
-        Instantiate(Enemy, enemyBase.transform.position, Quaternion.identity);
+        Instantiate(Enemy, enemyBase.transform.position, Quaternion.identity).GetComponent<Enemy>().EnemyDead += OnEnemyDead;
+        count++;
+    }
+
+    void OnEnemyDead(Transform tr)
+    {
+        count--;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
 
-    public enum attackMode { firstIn, random, leastHP, canKillOnly }
+    public enum attackMode { firstIn, random, leastHP, canKillOnly, mostHPPercent }
 
     public GameObject arrow;
     public Transform shootingPoint;
@@ -30,15 +30,47 @@ public class Shooting : MonoBehaviour
     {
         if (Time.time - LastShotTime > shootingSpace && enemiesInRange.Count > 0)
         {
-            LastShotTime = Time.time;
-            ShootAt(enemiesInRange[0]);
+            if(Shoot(enemiesInRange, mode))
+                LastShotTime = Time.time;
         }
     }
 
-    void ShootAt(Transform enemy)
+    bool Shoot(List<Transform> enemies, attackMode mo)
     {
         //Debug.Log(enemy);
-        Instantiate(arrow, shootingPoint.position, Quaternion.identity).GetComponent<FlyingArrow>().target = enemy;
+        switch (mo)
+        {
+            case attackMode.firstIn :
+                Instantiate(arrow, shootingPoint.position, Quaternion.identity).GetComponent<FlyingArrow>().target = enemies[0];
+                return true;
+            case attackMode.leastHP:
+                Transform tempEnemy = enemies[0];
+                foreach (Transform enemy in enemies)
+                    if (enemy.GetComponent<Enemy>().curHP < tempEnemy.GetComponent<Enemy>().curHP)
+                        tempEnemy = enemy;
+                Instantiate(arrow, shootingPoint.position, Quaternion.identity).GetComponent<FlyingArrow>().target = tempEnemy;
+                return true;
+            case attackMode.canKillOnly:
+                foreach (Transform enemy in enemies)
+                    if (enemy.GetComponent<Enemy>().curHP <= arrow.GetComponent<FlyingArrow>().demage)
+                    {
+                        Instantiate(arrow, shootingPoint.position, Quaternion.identity).GetComponent<FlyingArrow>().target = enemy;
+                        return true;
+                    }
+                return false;
+            case attackMode.random:
+                Instantiate(arrow, shootingPoint.position, Quaternion.identity).GetComponent<FlyingArrow>().target = enemies[(int)(Random.value*enemies.Count) >= enemies.Count ? enemies.Count-1 : (int)(Random.value * enemies.Count)];
+                return true;
+            case attackMode.mostHPPercent:
+                Transform tempEnemy2 = enemies[0];
+                foreach (Transform enemy in enemies)
+                    if (enemy.GetComponent<Enemy>().curHP * tempEnemy2.GetComponent<Enemy>().maxHP > tempEnemy2.GetComponent<Enemy>().curHP * enemy.GetComponent<Enemy>().maxHP)
+                        tempEnemy2 = enemy;
+                Instantiate(arrow, shootingPoint.position, Quaternion.identity).GetComponent<FlyingArrow>().target = tempEnemy2;
+                return true;
+            default:
+                return false;
+        }
     }
 
     void OnEnemyDead(Transform enemy)

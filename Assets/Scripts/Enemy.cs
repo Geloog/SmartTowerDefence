@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        HPBar.value = (float)curHP / (float)maxHP;
     }
 
     // Update is called once per frame
