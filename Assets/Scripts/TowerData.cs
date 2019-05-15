@@ -5,6 +5,7 @@ using UnityEngine;
 public class TowerData : MonoBehaviour
 {
     public int price=200;
+    public Transform[] models;
 
     // Start is called before the first frame update
     void Start()

@@ -12,6 +12,8 @@ public class UIDataManager : MonoBehaviour
     public int HP = 10;
     public Text HPText;
 
+    public Image GameOver;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,10 +47,11 @@ public class UIDataManager : MonoBehaviour
 
     public bool loseHP(int number)
     {
-        if (HP < number)
+        if (HP <= number)
         {
             HP = 0;
             HPText.text = "剩余生命：" + HP.ToString();
+            GameOver.gameObject.SetActive(true);
             return false;
         }
         else

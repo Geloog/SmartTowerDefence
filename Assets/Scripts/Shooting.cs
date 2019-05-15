@@ -17,7 +17,7 @@ public class Shooting : MonoBehaviour
     //测试用
     //int count = 1;
 
-    private float LastShotTime;
+    public float LastShotTime { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +30,11 @@ public class Shooting : MonoBehaviour
     {
         if (Time.time - LastShotTime > shootingSpace && enemiesInRange.Count > 0)
         {
-            if(Shoot(enemiesInRange, mode))
+            if (Shoot(enemiesInRange, mode))
+            {
                 LastShotTime = Time.time;
+                transform.Find("CoolDown").gameObject.SetActive(true);
+            }
         }
     }
 

@@ -26,8 +26,8 @@ public class SceneControl : MonoBehaviour
         #endif
     }
 
-    public void StartGame()
+    public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(sceneName);
     }
 }

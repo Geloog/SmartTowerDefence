@@ -25,11 +25,13 @@ public class LevelManager : MonoBehaviour
     {
         public int amount = 5;
         public float space = 1;
+        public GameObject enemy;
         //GameObject enemy;     //TODO
-        public wave(int am,float sp)
+        public wave(int am, float sp, GameObject en)
         {
             amount = am;
             space = sp;
+            enemy = en;
         }
     }
 
@@ -37,9 +39,9 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         lastCreateTime = Time.time;
-        waves.Add(new wave(5, 1));
-        waves.Add(new wave(10, 1));
-        waves.Add(new wave(15, 1));
+        waves.Add(new wave(5, 1, Enemy));
+        waves.Add(new wave(10, 1, Enemy));
+        waves.Add(new wave(15, 1, Enemy));
     }
 
     // Update is called once per frame
@@ -49,7 +51,7 @@ public class LevelManager : MonoBehaviour
         {
             if(enemyCreated < curWave.amount && Time.time - lastCreateTime > curWave.space)
             {
-                CreateEnemy();
+                CreateEnemy(curWave.enemy);
                 lastCreateTime = Time.time;
                 enemyCreated++;
             }
@@ -76,9 +78,9 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void CreateEnemy()
+    void CreateEnemy(GameObject enemy)
     {
-        Instantiate(Enemy, enemyBase.transform.position, Quaternion.identity).GetComponent<Enemy>().EnemyDead += OnEnemyDead;
+        Instantiate(enemy, enemyBase.transform.position, Quaternion.identity).GetComponent<Enemy>().EnemyDead += OnEnemyDead;
         count++;
     }
 

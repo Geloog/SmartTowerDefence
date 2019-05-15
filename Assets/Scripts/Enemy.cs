@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        HPBar.GetComponent<RectTransform>().localScale = new Vector3(HPBar.GetComponent<RectTransform>().localScale.x * ((float)maxHP/100), HPBar.GetComponent<RectTransform>().localScale.y, HPBar.GetComponent<RectTransform>().localScale.z);
         HPBar.value = (float)curHP / (float)maxHP;
     }
 
