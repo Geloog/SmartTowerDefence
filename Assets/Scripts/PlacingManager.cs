@@ -60,8 +60,8 @@ public class PlacingManager : MonoBehaviour
                 if (isSetting && canBeSet && hit.transform.GetComponent<Obstacle>().place())
                 {
                     isSetting = false;
-                    foreach (Transform child in movingTower.GetComponent<TowerData>().models)  //放置，颜色回复（为白）
-                        child.gameObject.GetComponent<Renderer>().material.color = Color.white;
+                    foreach (Transform child in movingTower.GetComponent<TowerData>().models)  //放置，颜色回复
+                        child.gameObject.GetComponent<Renderer>().material.color = movingTower.GetComponent<TowerData>().firstlyColor;
                     movingTower.GetComponent<Shooting>().enabled = true;
                     movingTower.GetComponent<SphereCollider>().enabled = true;
                     movingTower.transform.Find("AttackRange").gameObject.SetActive(false);

@@ -82,7 +82,11 @@
     <Compile Include="Assets\Scripts\ForTest\RotationMovement.cs" />
     <Compile Include="Assets\Scripts\ForTest\ShowValue.cs" />
     <Compile Include="Assets\Scripts\ForTest\Test.cs" />
-    <Compile Include="Assets\Scripts\LevelManager.cs" />
+    <Compile Include="Assets\Scripts\KillerBullet.cs" />
+    <Compile Include="Assets\Scripts\KillerShooting.cs" />
+    <Compile Include="Assets\Scripts\KillerTowerMenu.cs" />
+    <Compile Include="Assets\Scripts\LevelManager1.cs" />
+    <Compile Include="Assets\Scripts\LevelManager2.cs" />
     <Compile Include="Assets\Scripts\ManualMove.cs" />
     <Compile Include="Assets\Scripts\navtest.cs" />
     <Compile Include="Assets\Scripts\Obstacle.cs" />

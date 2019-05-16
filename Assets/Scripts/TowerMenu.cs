@@ -9,8 +9,8 @@ public class TowerMenu : MonoBehaviour
 
     public GameObject TowerData;
 
-    private string Name = "箭塔";
-    private string Description = "最普通的箭塔，攻击间隔为1秒，伤害为20.";
+    //public string Name = "箭塔";
+    //public string Description = "最普通的箭塔，攻击间隔为1秒，伤害为20.";
 
     // Start is called before the first frame update
     void Start()
@@ -33,9 +33,10 @@ public class TowerMenu : MonoBehaviour
 
     private void OnMouseExit()
     {
+        Color first = transform.parent.GetComponent<TowerData>().firstlyColor;
         transform.parent.Find("AttackRange").gameObject.SetActive(false);
-        foreach (Transform child in transform.parent.GetComponent<TowerData>().models)  //移开时恢复为白
-            child.gameObject.GetComponent<Renderer>().material.color = Color.white;
+        foreach (Transform child in transform.parent.GetComponent<TowerData>().models)  //移开时恢复
+            child.gameObject.GetComponent<Renderer>().material.color = first;
     }
 
     private void OnMouseDown()
@@ -45,8 +46,8 @@ public class TowerMenu : MonoBehaviour
             GameObject canvas = GameObject.Find("CanvasAuto");
             GameObject towerdata = Instantiate(TowerData, canvas.transform);
             towerdata.GetComponent<SaveAndQuit>().tower = transform.parent.gameObject;
-            towerdata.transform.Find("Name").GetComponent<Text>().text = Name;
-            towerdata.transform.Find("Description").GetComponent<Text>().text = Description;
+            //towerdata.transform.Find("Name").GetComponent<Text>().text = Name;
+            //towerdata.transform.Find("Description").GetComponent<Text>().text = Description;
             towerdata.transform.Find("AttackMode").GetComponent<Dropdown>().value = (int)transform.parent.GetComponent<Shooting>().mode;
         }
     }

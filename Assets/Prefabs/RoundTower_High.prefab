@@ -501,7 +501,6 @@ GameObject:
   - component: {fileID: 38786803830934157}
   - component: {fileID: -8626308172655931354}
   - component: {fileID: 8548013842675089210}
-  - component: {fileID: -6471640758827181576}
   m_Layer: 2
   m_Name: RoundTower_High
   m_TagString: Tower
@@ -600,18 +599,7 @@ MonoBehaviour:
   - {fileID: 8843227431624060939}
   - {fileID: 8843227431624060933}
   - {fileID: 8843227431624060935}
---- !u!114 &-6471640758827181576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8843227431624420397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d22789a4e8c14d94898e2edb5261eb2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  firstlyColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &8843227431624420399
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,20 +27,32 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (EnemyDead != null)
-            EnemyDead(transform);
+        EnemyDead?.Invoke(transform);
     }
 
     public void takeDamage(int damage)
     {
-        //Debug.Log(HPBar.value);
         curHP -= damage;
         if (curHP > 0)
             HPBar.value = (float)curHP / (float)maxHP;
         else
         {
+            GameObject.Find("GameManager").GetComponent<UIDataManager>().gainGold(reward);
             Destroy(gameObject);
-            GameObject.Find("GameManager").GetComponent<UIDataManager>().gainGold(50);
+        }
+    }
+
+    public void takeDamage(int damage, GameObject bullet)
+    {
+        curHP -= damage;
+        if (curHP > 0)
+            HPBar.value = (float)curHP / (float)maxHP;
+        else
+        {
+            if (bullet.name == "KillerBullet(Clone)")
+                bullet.GetComponent<KillerBullet>().parent.GetComponent<KillerShooting>().RefreshAttack();
+            GameObject.Find("GameManager").GetComponent<UIDataManager>().gainGold(reward);
+            Destroy(gameObject);
         }
     }
 

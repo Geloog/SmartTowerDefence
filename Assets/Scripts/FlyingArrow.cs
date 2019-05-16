@@ -5,8 +5,8 @@ using UnityEngine;
 public class FlyingArrow : MonoBehaviour
 {
 
-    private float StarttingTime;
-    private Vector3 StarttingPosition;
+    protected float StarttingTime;
+    protected Vector3 StarttingPosition;
 
     public int demage = 20;
     public Transform target;
@@ -33,7 +33,7 @@ public class FlyingArrow : MonoBehaviour
         if( (Time.time - StarttingTime) * speed >= 1)
         {
             if(target)
-                target.GetComponent<Enemy>().takeDamage(demage);
+                target.GetComponent<Enemy>().takeDamage(demage, gameObject);
             Destroy(gameObject);
         }
     }

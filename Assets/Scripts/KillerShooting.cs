@@ -2,28 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooting : MonoBehaviour
+public class KillerShooting : Shooting
 {
-
-    public enum attackMode { firstIn, random, leastHP, canKillOnly, mostHPPercent }
-
-    public GameObject arrow;
-    public Transform shootingPoint;
-    public List<Transform> enemiesInRange;
-    public float shootingSpace = 1;           //射击间隔时间
-
-    public attackMode mode;
-
-    //测试用
-    //int count = 1;
-
-    public float LastShotTime { get; protected set; }
-
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
-        LastShotTime = -1 * shootingSpace;
-    }
+        
+    }*/
 
     // Update is called once per frame
     void Update()
@@ -38,15 +23,16 @@ public class Shooting : MonoBehaviour
         }
     }
 
-    protected bool Shoot(List<Transform> enemies, attackMode mo)
+    new protected bool Shoot(List<Transform> enemies, attackMode mo)
     {
         //Debug.Log(enemy);
         GameObject bullet;
         switch (mo)
         {
-            case attackMode.firstIn :
+            case attackMode.firstIn:
                 bullet = Instantiate(arrow, shootingPoint.position, Quaternion.identity);
                 bullet.GetComponent<FlyingArrow>().target = enemies[0];
+                bullet.GetComponent<KillerBullet>().parent = gameObject;
                 return true;
             case attackMode.leastHP:
                 Transform tempEnemy = enemies[0];
@@ -55,6 +41,7 @@ public class Shooting : MonoBehaviour
                         tempEnemy = enemy;
                 bullet = Instantiate(arrow, shootingPoint.position, Quaternion.identity);
                 bullet.GetComponent<FlyingArrow>().target = tempEnemy;
+                bullet.GetComponent<KillerBullet>().parent = gameObject;
                 return true;
             case attackMode.canKillOnly:
                 foreach (Transform enemy in enemies)
@@ -62,12 +49,14 @@ public class Shooting : MonoBehaviour
                     {
                         bullet = Instantiate(arrow, shootingPoint.position, Quaternion.identity);
                         bullet.GetComponent<FlyingArrow>().target = enemy;
+                        bullet.GetComponent<KillerBullet>().parent = gameObject;
                         return true;
                     }
                 return false;
             case attackMode.random:
                 bullet = Instantiate(arrow, shootingPoint.position, Quaternion.identity);
                 bullet.GetComponent<FlyingArrow>().target = enemies[(int)(Random.value * enemies.Count) >= enemies.Count ? enemies.Count - 1 : (int)(Random.value * enemies.Count)];
+                bullet.GetComponent<KillerBullet>().parent = gameObject;
                 return true;
             case attackMode.mostHPPercent:
                 Transform tempEnemy2 = enemies[0];
@@ -76,43 +65,16 @@ public class Shooting : MonoBehaviour
                         tempEnemy2 = enemy;
                 bullet = Instantiate(arrow, shootingPoint.position, Quaternion.identity);
                 bullet.GetComponent<FlyingArrow>().target = tempEnemy2;
+                bullet.GetComponent<KillerBullet>().parent = gameObject;
                 return true;
             default:
                 return false;
         }
     }
 
-    void OnEnemyDead(Transform enemy)
+    public void RefreshAttack()
     {
-        enemiesInRange.Remove(enemy);
-        /*Debug.Log("EnemyDead!");
-        Debug.Log(enemiesInRange.Count);*/
+        LastShotTime -= shootingSpace;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.tag == "Enemy")
-        {
-            enemiesInRange.Add(other.transform);
-            /*Debug.Log("Enter!");
-            Debug.Log(enemiesInRange.Count);*/
-            other.gameObject.GetComponent<Enemy>().EnemyDead += OnEnemyDead;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.transform.tag == "Enemy")
-        {
-            enemiesInRange.Remove(other.transform);
-            /*Debug.Log("Exit!");
-            Debug.Log(enemiesInRange.Count);*/
-            other.gameObject.GetComponent<Enemy>().EnemyDead -= OnEnemyDead;
-        }
-    }
-
-    public void setMode(int m)
-    {
-        mode = (attackMode)m;
-    }
 }

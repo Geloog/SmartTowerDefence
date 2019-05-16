@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager1 : MonoBehaviour
 {
 
-    List<wave> waves = new List<wave>();
+    protected List<wave> waves = new List<wave>();
 
     bool ready = false;
 
-    float lastCreateTime;
+    protected float lastCreateTime;
     int enemyCreated = 0;
     int count = 0;
     wave curWave;
@@ -19,14 +19,14 @@ public class LevelManager : MonoBehaviour
     public Transform enemyBase;
     public Transform Base;
     public GameObject Enemy;
+    public GameObject Quick;
     public Image levelClear;
 
-    class wave
+    protected class wave
     {
         public int amount = 5;
         public float space = 1;
         public GameObject enemy;
-        //GameObject enemy;     //TODO
         public wave(int am, float sp, GameObject en)
         {
             amount = am;
@@ -80,7 +80,7 @@ public class LevelManager : MonoBehaviour
 
     void CreateEnemy(GameObject enemy)
     {
-        Instantiate(enemy, enemyBase.transform.position, Quaternion.identity).GetComponent<Enemy>().EnemyDead += OnEnemyDead;
+        Instantiate(enemy, new Vector3(enemyBase.transform.position.x, enemy.transform.position.y, enemyBase.transform.position.z), Quaternion.identity).GetComponent<Enemy>().EnemyDead += OnEnemyDead;
         count++;
     }
 

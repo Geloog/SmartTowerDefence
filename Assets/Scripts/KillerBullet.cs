@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerData : MonoBehaviour
+public class KillerBullet : FlyingArrow
 {
-    public int price=200;
-    public Transform[] models;
-    public Color firstlyColor;
+
+    public GameObject parent;
 
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
-        
-    }
+
+    }*/
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         
-    }
+    }*/
+
 }

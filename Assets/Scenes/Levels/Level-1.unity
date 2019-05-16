@@ -3169,7 +3169,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u606D\u559C\u901A\u5173\uFF01"
+  m_Text: "\u606D\u559C\u8FC7\u5173\uFF01"
 --- !u!222 &803689636
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5994,6 +5994,7 @@ MonoBehaviour:
   goldText: {fileID: 611322579}
   HP: 10
   HPText: {fileID: 13073852}
+  GameOver: {fileID: 0}
 --- !u!114 &1616764224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6010,6 +6011,7 @@ MonoBehaviour:
   enemyBase: {fileID: 750223272}
   Base: {fileID: 962577398}
   Enemy: {fileID: 2396373276736972156, guid: f7c5800017e80514180a59f69ab6ab64, type: 3}
+  Quick: {fileID: 0}
   levelClear: {fileID: 539570113}
 --- !u!1001 &1635031106
 PrefabInstance:
