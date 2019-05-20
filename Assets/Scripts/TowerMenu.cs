@@ -48,7 +48,8 @@ public class TowerMenu : MonoBehaviour
             towerdata.GetComponent<SaveAndQuit>().tower = transform.parent.gameObject;
             //towerdata.transform.Find("Name").GetComponent<Text>().text = Name;
             //towerdata.transform.Find("Description").GetComponent<Text>().text = Description;
-            towerdata.transform.Find("AttackMode").GetComponent<Dropdown>().value = (int)transform.parent.GetComponent<Shooting>().mode;
+            if(towerdata.transform.Find("AttackMode"))
+                towerdata.transform.Find("AttackMode").GetComponent<Dropdown>().value = (int)transform.parent.GetComponent<Shooting>().mode;
         }
     }
 }

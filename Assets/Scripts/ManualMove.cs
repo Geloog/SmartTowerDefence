@@ -7,7 +7,7 @@ public class ManualMove : MonoBehaviour
 
     public Transform targets;
     public Transform Base;
-    public int speed = 10;
+    public int speed = 20;
     List<Vector3> poss;
 
     // Start is called before the first frame update

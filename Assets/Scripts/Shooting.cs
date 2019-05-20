@@ -93,10 +93,14 @@ public class Shooting : MonoBehaviour
     {
         if (other.transform.tag == "Enemy")
         {
-            enemiesInRange.Add(other.transform);
+            if (!enemiesInRange.Contains(other.transform))
+            {
+                enemiesInRange.Add(other.transform);
+                other.gameObject.GetComponent<Enemy>().EnemyDead += OnEnemyDead;
+            }
             /*Debug.Log("Enter!");
             Debug.Log(enemiesInRange.Count);*/
-            other.gameObject.GetComponent<Enemy>().EnemyDead += OnEnemyDead;
+
         }
     }
 
@@ -105,9 +109,9 @@ public class Shooting : MonoBehaviour
         if (other.transform.tag == "Enemy")
         {
             enemiesInRange.Remove(other.transform);
+            other.gameObject.GetComponent<Enemy>().EnemyDead -= OnEnemyDead;
             /*Debug.Log("Exit!");
             Debug.Log(enemiesInRange.Count);*/
-            other.gameObject.GetComponent<Enemy>().EnemyDead -= OnEnemyDead;
         }
     }
 

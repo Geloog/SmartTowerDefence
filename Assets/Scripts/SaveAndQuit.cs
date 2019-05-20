@@ -22,7 +22,8 @@ public class SaveAndQuit : MonoBehaviour
 
     public void Save_Quit()
     {
-        tower.GetComponent<Shooting>().setMode(transform.Find("AttackMode").GetComponent<Dropdown>().value);
+        if(transform.Find("AttackMode"))
+            tower.GetComponent<Shooting>().setMode(transform.Find("AttackMode").GetComponent<Dropdown>().value);
         Destroy(gameObject);
     }
 }
