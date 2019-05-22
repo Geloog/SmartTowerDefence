@@ -38,7 +38,7 @@ public class PlacingManager : MonoBehaviour
             {
                 
 
-                if (hit.collider.tag == "PlacingPoint")
+                if (hit.collider.tag == "PlacingPoint" && hit.collider.gameObject.GetComponent<Obstacle>().haveSpace)
                 {
                     
                     movingTower.transform.position = new Vector3(hit.transform.position.x, movingTower.transform.position.y, hit.transform.position.z);

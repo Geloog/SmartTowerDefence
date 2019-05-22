@@ -20,8 +20,8 @@ public class Freezing : MonoBehaviour
     {
         if (transform.localScale.x <= max)
         {
-            transform.localScale += new Vector3(step, step, step);
-            gameObject.GetComponent<Renderer>().material.color -= (Color)new Vector4(0, 0, 0, colorAStep);
+            transform.localScale += new Vector3(step * Time.deltaTime * 60, step * Time.deltaTime * 60, step * Time.deltaTime * 60);
+            gameObject.GetComponent<Renderer>().material.color -= (Color)new Vector4(0, 0, 0, colorAStep) * Time.deltaTime * 60;
         }
         else
             Destroy(gameObject);

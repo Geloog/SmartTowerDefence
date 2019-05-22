@@ -8,11 +8,11 @@ public class LevelManager1 : MonoBehaviour
 
     protected List<wave> waves = new List<wave>();
 
-    bool ready = false;
+    protected bool ready = false;
 
     protected float lastCreateTime;
-    int enemyCreated = 0;
-    int count = 0;
+    protected int enemyCreated = 0;
+    protected int count = 0;
     wave curWave;
 
     public Button startButton;
@@ -20,6 +20,7 @@ public class LevelManager1 : MonoBehaviour
     public Transform Base;
     public GameObject Enemy;
     public GameObject Quick;
+    public GameObject Boss;
     public Image levelClear;
 
     protected class wave
@@ -42,6 +43,7 @@ public class LevelManager1 : MonoBehaviour
         waves.Add(new wave(5, 1, Enemy));
         waves.Add(new wave(10, 1, Enemy));
         waves.Add(new wave(15, 1, Enemy));
+        UpdateInfomation();
     }
 
     // Update is called once per frame
@@ -60,6 +62,8 @@ public class LevelManager1 : MonoBehaviour
                 startButton.gameObject.SetActive(true);
                 ready = false;
                 waves.RemoveAt(0);
+                if(waves.Count > 0)
+                    UpdateInfomation();
                 enemyCreated = 0;
             }
         }
@@ -78,7 +82,7 @@ public class LevelManager1 : MonoBehaviour
         }
     }
 
-    void CreateEnemy(GameObject enemy)
+    protected void CreateEnemy(GameObject enemy)
     {
         Instantiate(enemy, new Vector3(enemyBase.transform.position.x, enemy.transform.position.y, enemyBase.transform.position.z), Quaternion.identity).GetComponent<Enemy>().EnemyDead += OnEnemyDead;
         count++;
@@ -87,5 +91,11 @@ public class LevelManager1 : MonoBehaviour
     void OnEnemyDead(Transform tr)
     {
         count--;
+    }
+
+    protected void UpdateInfomation()
+    {
+        if(waves.Count > 0)
+            GameObject.Find("GameManager").GetComponent<UIDataManager>().SetEnemyInfomation(waves[0].enemy.GetComponent<Enemy>().Infomation + " * " + waves[0].amount.ToString());
     }
 }

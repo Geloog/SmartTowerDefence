@@ -11,5 +11,6 @@ public class LevelManager3 : LevelManager1
         waves.Add(new wave(15, 0.3f, Enemy));
         waves.Add(new wave(30, 0.2f, Quick));
         waves.Add(new wave(50, 0.08f, Enemy));
+        UpdateInfomation();
     }
 }

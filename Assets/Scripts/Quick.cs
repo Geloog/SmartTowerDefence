@@ -19,9 +19,6 @@ public class Quick : Enemy
                 freezeTime -= Time.deltaTime;
             else
                 thaw();
-
-        if (Input.GetKey(KeyCode.Space))
-            freeze(3);
     }
 
     override public void freeze(float second)

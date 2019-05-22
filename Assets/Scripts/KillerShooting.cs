@@ -19,6 +19,7 @@ public class KillerShooting : Shooting
             {
                 LastShotTime = Time.time;
                 transform.Find("CoolDown").gameObject.SetActive(true);
+                Shot.Play();
             }
         }
     }

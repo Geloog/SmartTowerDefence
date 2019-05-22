@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
-        Application.Quit();
+
     }
 
     // Update is called once per frame
@@ -28,6 +29,12 @@ public class SceneControl : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        if (!(sceneName == "MainMenu" || sceneName == "LevelSelecter"))
+        {
+            if (GameObject.Find("MenuBGM(Clone)"))
+                Destroy(GameObject.Find("MenuBGM(Clone)"));
+        }
+
         SceneManager.LoadScene(sceneName);
     }
 }

@@ -12,6 +12,8 @@ public class UIDataManager : MonoBehaviour
     public int HP = 10;
     public Text HPText;
 
+    public Text EnemyInfomation;
+
     public Image GameOver;
 
     // Start is called before the first frame update
@@ -60,5 +62,16 @@ public class UIDataManager : MonoBehaviour
             HPText.text = "剩余生命：" + HP.ToString();
         }
         return true;
+    }
+
+    public void SetEnemyInfomation(string info)
+    {
+        EnemyInfomation.text = "下波敌人：" + info;
+        EnemyInfomation.enabled = true;
+    }
+
+    public void HideEnemyInfomation()
+    {
+        EnemyInfomation.enabled = false;
     }
 }

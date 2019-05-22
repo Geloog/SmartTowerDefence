@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public EnemyDeadHandler EnemyDead;
     public int maxHP = 100, curHP = 100;
     public int reward = 50;
+    public string Infomation = "人形";
 
     private UnityEngine.AI.NavMeshAgent agent;
     protected float freezeTime = 0;
@@ -36,9 +37,6 @@ public class Enemy : MonoBehaviour
                 freezeTime -= Time.deltaTime;
             else
                 thaw();
-
-        if (Input.GetKey(KeyCode.Space))
-            freeze(3);
     }
 
     private void OnDestroy()

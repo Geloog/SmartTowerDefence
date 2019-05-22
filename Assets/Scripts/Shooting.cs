@@ -8,6 +8,7 @@ public class Shooting : MonoBehaviour
     public enum attackMode { firstIn, random, leastHP, canKillOnly, mostHPPercent }
 
     public GameObject arrow;
+    public AudioSource Shot;
     public Transform shootingPoint;
     public List<Transform> enemiesInRange;
     public float shootingSpace = 1;           //射击间隔时间
@@ -34,6 +35,7 @@ public class Shooting : MonoBehaviour
             {
                 LastShotTime = Time.time;
                 transform.Find("CoolDown").gameObject.SetActive(true);
+                Shot.Play();
             }
         }
     }
@@ -67,7 +69,9 @@ public class Shooting : MonoBehaviour
                 return false;
             case attackMode.random:
                 bullet = Instantiate(arrow, shootingPoint.position, Quaternion.identity);
-                bullet.GetComponent<FlyingArrow>().target = enemies[(int)(Random.value * enemies.Count) >= enemies.Count ? enemies.Count - 1 : (int)(Random.value * enemies.Count)];
+                int ran = (int)(Random.value * enemies.Count);
+                ran = ran >= enemies.Count ? enemies.Count - 1 : ran;
+                bullet.GetComponent<FlyingArrow>().target = enemies[ran];
                 return true;
             case attackMode.mostHPPercent:
                 Transform tempEnemy2 = enemies[0];

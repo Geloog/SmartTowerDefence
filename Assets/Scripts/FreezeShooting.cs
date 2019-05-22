@@ -18,6 +18,7 @@ public class FreezeShooting : Shooting
             Shoot();
             LastShotTime = Time.time;
             transform.Find("CoolDown").gameObject.SetActive(true);
+            Shot.Play();
         }
     }
 
