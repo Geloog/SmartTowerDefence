@@ -10,7 +10,7 @@ public class TimeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Time.timeScale = speeds[1];
     }
 
     // Update is called once per frame

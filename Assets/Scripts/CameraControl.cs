@@ -15,12 +15,12 @@ public class CameraControl : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            transform.RotateAround(new Vector3(0, transform.position.y, 0), Vector3.up, 1);
+            transform.RotateAround(new Vector3(0, transform.position.y, 0), Vector3.up, 50 * Time.unscaledDeltaTime);
             transform.forward = -transform.position;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            transform.RotateAround(new Vector3(0, transform.position.y, 0), Vector3.up, -1);
+            transform.RotateAround(new Vector3(0, transform.position.y, 0), Vector3.up, -50 * Time.unscaledDeltaTime);
             transform.forward = -transform.position;
         }
     }
