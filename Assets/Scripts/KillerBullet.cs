@@ -14,9 +14,22 @@ public class KillerBullet : FlyingArrow
     }*/
 
     // Update is called once per frame
-    /*void Update()
+    void Update()
     {
-        
-    }*/
+        if (target)
+        {
+            transform.position = StarttingPosition + (new Vector3(0,1,0) + target.position - StarttingPosition) * (Time.time - StarttingTime) * speed;
+            transform.up = transform.position - target.position - new Vector3(0, 1, 0);
+        }
+        else
+            Destroy(gameObject);
+
+        if( (Time.time - StarttingTime) * speed >= 1)
+        {
+            if(target)
+                target.GetComponent<Enemy>().takeDamage(demage, gameObject);
+            Destroy(gameObject);
+        }
+    }
 
 }

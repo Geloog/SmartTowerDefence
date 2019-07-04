@@ -7078,8 +7078,8 @@ MonoBehaviour:
   enemyBase: {fileID: 750223272}
   Base: {fileID: 962577398}
   Enemy: {fileID: 2396373276736972156, guid: f7c5800017e80514180a59f69ab6ab64, type: 3}
-  Quick: {fileID: 0}
-  Boss: {fileID: 0}
+  Quick: {fileID: 6227227555877897711, guid: 3c343203e56ce8349af206fe41d55f76, type: 3}
+  Boss: {fileID: 8590115101208143616, guid: df47c98319aeca840a6d84f3b307c3f9, type: 3}
   levelClear: {fileID: 539570113}
 --- !u!114 &1616764225
 MonoBehaviour:

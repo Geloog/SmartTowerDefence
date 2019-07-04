@@ -80,9 +80,11 @@
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\FlyingArrow.cs" />
     <Compile Include="Assets\Scripts\ForTest\Draw.cs" />
+    <Compile Include="Assets\Scripts\ForTest\RotateTowards.cs" />
     <Compile Include="Assets\Scripts\ForTest\RotationMovement.cs" />
     <Compile Include="Assets\Scripts\ForTest\ShowValue.cs" />
     <Compile Include="Assets\Scripts\ForTest\Test.cs" />
+    <Compile Include="Assets\Scripts\ForTest\TimeScale.cs" />
     <Compile Include="Assets\Scripts\FreezeShooting.cs" />
     <Compile Include="Assets\Scripts\FreezeTowerMenu.cs" />
     <Compile Include="Assets\Scripts\Freezing.cs" />
